@@ -1,5 +1,5 @@
 ### Hexlet tests and linter status:
-[![Actions Status](https://github.com/andrg2280/java-project-72/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/andrg2280/java-project-72/actions
+[![Actions Status](https://github.com/andrg2280/java-project-72/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/andrg2280/java-project-72/actions)
 [![Java CI](https://github.com/hexlet-boilerplates/java-package/workflows/Java%20CI/badge.svg)](https://github.com/andrg2280/java-project-72/actions/workflows/main.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f791883b0341c91e272a/maintainability)](https://codeclimate.com/github/andrg2280/java-project-72/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f791883b0341c91e272a/test_coverage)](https://codeclimate.com/github/andrg2280/java-project-72/test_coverage)
