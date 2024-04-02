@@ -46,7 +46,7 @@ public class App {
         });
         // Описываем, что загрузится по адресу /
         app.get("/welcome", ctx -> ctx.result("Welcome to Hexlet!"));
-        app.get("/", ctx -> ctx.render("page.jte"));
+        app.get("/", ctx -> ctx.render("jte/layout/page.jte"));
         return app;
         // END
 
