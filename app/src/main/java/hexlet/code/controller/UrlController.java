@@ -58,10 +58,10 @@ public class UrlController {
             ctx.sessionAttribute("flash-type", "info");
             ctx.redirect(NamedRoutes.urlsPath());
         } else {
-            String strValidURL = parsedUrl.getProtocol() +
-                    "://" + parsedUrl.getHost() +
-                    (parsedUrl.getPort() == -1 ? "" : ":") +
-                    (parsedUrl.getPort() == -1 ? "" : String.valueOf(parsedUrl.getPort()));
+            String strValidURL = parsedUrl.getProtocol()
+                    + "://" + parsedUrl.getHost()
+                    + (parsedUrl.getPort() == -1 ? "" : ":")
+                    + (parsedUrl.getPort() == -1 ? "" : String.valueOf(parsedUrl.getPort()));
             var url = new Url(strValidURL, new Timestamp(System.currentTimeMillis()));
             UrlRepository.save(url);
             ctx.sessionAttribute("flash", "Page added successfully");
