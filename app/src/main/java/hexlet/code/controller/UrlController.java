@@ -52,17 +52,16 @@ public class UrlController {
             ctx.redirect(NamedRoutes.rootPath());
             return;
         }
-
-        if (UrlRepository.findByName(String.valueOf(parsedUrl)) != null) {
+        String validURL = parsedUrl.getProtocol()
+                + "://" + parsedUrl.getHost()
+                + (parsedUrl.getPort() == -1 ? "" : ":")
+                + (parsedUrl.getPort() == -1 ? "" : String.valueOf(parsedUrl.getPort()));
+        if (UrlRepository.findByName(validURL) != null) {
             ctx.sessionAttribute("flash", "This page already exist");
             ctx.sessionAttribute("flash-type", "info");
             ctx.redirect(NamedRoutes.urlsPath());
         } else {
-            String strValidURL = parsedUrl.getProtocol()
-                    + "://" + parsedUrl.getHost()
-                    + (parsedUrl.getPort() == -1 ? "" : ":")
-                    + (parsedUrl.getPort() == -1 ? "" : String.valueOf(parsedUrl.getPort()));
-            var url = new Url(strValidURL, new Timestamp(System.currentTimeMillis()));
+            var url = new Url(validURL, new Timestamp(System.currentTimeMillis()));
             UrlRepository.save(url);
             ctx.sessionAttribute("flash", "Page added successfully");
             ctx.sessionAttribute("flash-type", "success");
