@@ -1,4 +1,18 @@
 package hexlet.code.dto;
 
-public class UrlPage {
+
+import hexlet.code.model.UrlCheck;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+@AllArgsConstructor
+@Getter
+public class UrlPage extends BasePage {
+    private  Long id;
+    private  String name;
+    private  Timestamp createdAt;
+    private  List<UrlCheck> urlChecks;
 }

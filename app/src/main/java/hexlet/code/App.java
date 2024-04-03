@@ -1,13 +1,20 @@
 package hexlet.code;
 
 import com.zaxxer.hikari.HikariConfig;
-//import com.zaxxer.hikari.HikariDataSource;
-//import hexlet.code.repository.BaseRepository;
+import com.zaxxer.hikari.HikariDataSource;
+import hexlet.code.controller.RootController;
+import hexlet.code.repository.BaseRepository;
+import hexlet.code.utils.NamedRoutes;
+import hexlet.code.controller.UrlController;
+import hexlet.code.controller.UrlCheckController;
 import io.javalin.Javalin;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.SQLException;
+import java.util.stream.Collectors;
 
 import gg.jte.ContentType;
 import gg.jte.TemplateEngine;
@@ -30,7 +37,7 @@ public class App {
         TemplateEngine templateEngine = TemplateEngine.create(codeResolver, ContentType.Html);
         return templateEngine;
     }
-    public static Javalin getApp() {
+    public static Javalin getApp() throws SQLException {
 
         // BEGIN
         var hikariConfig = new HikariConfig();
@@ -39,6 +46,16 @@ public class App {
             hikariConfig.setDriverClassName("org.postgresql.Driver");
         }
         hikariConfig.setJdbcUrl(databaseUrl);
+        var dataSource = new HikariDataSource(hikariConfig);
+        var inputStream = App.class.getClassLoader().getResourceAsStream("dbStruct.sql");
+        var reader = new BufferedReader(new InputStreamReader(inputStream));
+        var sql = reader.lines().collect(Collectors.joining("\n"));
+        try (var connection = dataSource.getConnection();
+             var statement = connection.createStatement()) {
+            statement.execute(sql);
+        }
+        BaseRepository.dataSource = dataSource;
+
         // Создаем приложение
         var app = Javalin.create(config -> {
             config.bundledPlugins.enableDevLogging();
@@ -46,7 +63,11 @@ public class App {
         });
         // Описываем, что загрузится по адресу /
         app.get("/welcome", ctx -> ctx.result("Welcome to Hexlet!"));
-        app.get("/", ctx -> ctx.render("jte/layout/page.jte"));
+        app.get(NamedRoutes.rootPath(), RootController::index);
+        app.get(NamedRoutes.urlsPath(), UrlController::show);
+        app.get(NamedRoutes.urlPath("{id}"), UrlController::index);
+        app.post(NamedRoutes.urlsPath(), UrlController::create);
+        app.post(NamedRoutes.urlChecksPath("{id}"), UrlCheckController::create);
         return app;
         // END
 

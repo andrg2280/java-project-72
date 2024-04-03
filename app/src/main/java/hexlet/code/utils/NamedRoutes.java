@@ -6,19 +6,23 @@ public class NamedRoutes {
         return "/";
     }
 
-    public static String postsPath() {
+    public static String urlsPath() {
         return "/urls";
     }
 
-    public static String buildPostPath() {
-        return "/urls/build";
-    }
-
-    public static String postPath(Long id) {
-        return postPath(String.valueOf(id));
-    }
-
-    public static String postPath(String id) {
+    public static String urlPath(String id) {
         return "/urls/" + id;
+    }
+
+    public static String urlPath(Long id) {
+        return urlPath(String.valueOf(id));
+    }
+
+    public static String urlChecksPath(String id) {
+        return "/urls/" + id + "/checks";
+    }
+
+    public static String urlChecksPath(Long id) {
+        return urlChecksPath(String.valueOf(id));
     }
 }
