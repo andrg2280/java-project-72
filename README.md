@@ -4,6 +4,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/bc953fb0ab378995dab3/maintainability)](https://codeclimate.com/github/hexlet-boilerplates/java-package/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/bc953fb0ab378995dab3/test_coverage)](https://codeclimate.com/github/hexlet-boilerplates/java-package/test_coverage)
 
+Application available at: https://java-project-72-andrg2280.onrender.com
 A project template with only the bare minimum of structure. A good starting point for a small project.
 
 ## Start
