@@ -137,4 +137,16 @@ public final class AppTest {
             assertThat(description).isEqualTo("content description");
         });
     }
+    @Test
+    public void testCheckFakeUrl() {
+        JavalinTest.test(app, (server, client) -> {
+            var fakeWebsite = "http://localhost:7070";
+            client.post("/urls", "url=" + fakeWebsite);
+
+            var urlId = UrlRepository.findByName(fakeWebsite).getId();
+            client.post(String.format("/urls/%s/checks", urlId));
+
+            assertThat(UrlCheckRepository.getEntitiesById(urlId)).isEmpty();
+        });
+    }
 }
