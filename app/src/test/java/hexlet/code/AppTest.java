@@ -117,7 +117,19 @@ public final class AppTest {
             assertThat(response.code()).isEqualTo(404);
         });
     }
-
+    @Test
+    public void testEntities() {
+        JavalinTest.test(app, (server, client) -> {
+            var requestBody = "url=https://www.dzen.ru";
+            var response = client.post(NamedRoutes.urlsPath(), requestBody);
+            assertThat(response.code()).isEqualTo(200);
+            assertThat(response.body().string()).contains("https://www.dzen.ru");
+            assertThat(UrlRepository.getEntities()).hasSize(1);
+            var response2 = client.get(NamedRoutes.urlPath("1"));
+            assertThat(response2.code()).isEqualTo(200);
+            assertThat(response2.body().string()).contains("https://www.dzen.ru");
+        });
+    }
     @Test
     public void testCheckUrl() throws SQLException {
         var url = new Url(urlName, new Timestamp(System.currentTimeMillis()));
