@@ -39,7 +39,6 @@ public class App {
     }
     public static Javalin getApp() throws SQLException {
 
-        // BEGIN
         var hikariConfig = new HikariConfig();
         String databaseUrl = getDatabaseUrl();
         if (databaseUrl.contains("postgresql")) {
@@ -56,25 +55,21 @@ public class App {
         }
         BaseRepository.dataSource = dataSource;
 
-        // Создаем приложение
         var app = Javalin.create(config -> {
             config.bundledPlugins.enableDevLogging();
             config.fileRenderer(new JavalinJte(createTemplateEngine()));
         });
-        // Описываем, что загрузится по адресу /
         app.get("/welcome", ctx -> ctx.result("Welcome to Hexlet!"));
         app.get(NamedRoutes.rootPath(), RootController::index);
         app.get(NamedRoutes.urlsPath(), UrlController::show);
         app.get(NamedRoutes.urlPath("{id}"), UrlController::index);
-        app.post(NamedRoutes.urlsPath(), UrlController::create);
-        app.post(NamedRoutes.urlChecksPath("{id}"), UrlCheckController::create);
+        app.post(NamedRoutes.urlsPath(), UrlController::addPage);
+        app.post(NamedRoutes.urlChecksPath("{id}"), UrlCheckController::checkUrl);
         return app;
-        // END
 
     }
     public static void main(String[] args) throws IOException, SQLException {
         var app = getApp();
-
         app.start(getPort());
     }
 }

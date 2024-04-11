@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS url_checks;
 DROP TABLE IF EXISTS urls;
 
 create table urls
@@ -7,7 +8,6 @@ create table urls
     created_at timestamp                               not null
 );
 
-DROP TABLE IF EXISTS url_checks;
 
 create table url_checks
 (

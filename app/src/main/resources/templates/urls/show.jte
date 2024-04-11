@@ -6,14 +6,14 @@
 page = page,
 content = @`
     <div class="container-lg mt-5">
-        <h2>Pages</h2>
+        <h2>Страницы</h2>
         <table class="table table-striped mt-3">
             <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Last check</th>
-                <th scope="col">Response code</th>
+                <th scope="col">Наименовние</th>
+                <th scope="col">Дата/время последней проверки</th>
+                <th scope="col">Код ответа</th>
             </tr>
             </thead>
             <tbody>

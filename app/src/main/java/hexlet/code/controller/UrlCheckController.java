@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 
 public class UrlCheckController {
-    public static void create(Context ctx) throws SQLException {
+    public static void checkUrl(Context ctx) throws SQLException {
         var urlId = ctx.pathParamAsClass("id", Long.class).get();
         var url = UrlRepository.find(urlId)
                 .orElseThrow(() -> new NotFoundResponse("Entity with id = " + urlId + " not found"));
@@ -39,10 +39,10 @@ public class UrlCheckController {
             var urlCheck = new UrlCheck(statusCode, title, h1, description, urlId, createdAt);
             UrlCheckRepository.save(urlCheck);
 
-            ctx.sessionAttribute("flash", "Page checked successfully");
+            ctx.sessionAttribute("flash", "Страница успешно проверена");
             ctx.sessionAttribute("flash-type", "success");
         } catch (Exception e) {
-            ctx.sessionAttribute("flash", "Incorrect URL");
+            ctx.sessionAttribute("flash", "Неверный адрес URL");
             ctx.sessionAttribute("flash-type", "danger");
         }
 

@@ -6,7 +6,7 @@
 page = page,
 content = @`
     <div class="container-lg mt-5">
-        <h2>Page ${page.getName()}</h2>
+        <h2>Страница ${page.getName()}</h2>
         <table class="table mt-3">
             <tbody>
             <tr>
@@ -14,31 +14,31 @@ content = @`
                 <td>${page.getId()}</td>
             </tr>
             <tr>
-                <th scope="row">Name</th>
+                <th scope="row">Наименование</th>
                 <td>${page.getName()}</td>
             </tr>
             <tr>
-                <th scope="row">Created at</th>
+                <th scope="row">Дата/время добавления</th>
                 <td>${page.getCreatedAt().toString()}</td>
             </tr>
             </tbody>
         </table>
 
-        <h2 class="mt-5">Checks</h2>
+        <h2 class="mt-5">Проверки</h2>
 
         <form method="post" action="${NamedRoutes.urlChecksPath(page.getId())}">
-            <button type="submit" class="btn btn-primary">Run check!</button>
+            <button type="submit" class="btn btn-primary">Запустить проверку</button>
         </form>
 
         <table class="table mt-3">
             <thead>
             <tr>
                 <th class="col">ID</th>
-                <th class="col">Status code</th>
-                <th class="col">Title</th>
+                <th class="col">Код статуса</th>
+                <th class="col">Заголовок</th>
                 <th class="col">H1</th>
-                <th class="col">Description</th>
-                <th class="col">Check date</th>
+                <th class="col">Описание</th>
+                <th class="col">Дата/время проверки</th>
             </tr>
             </thead>
             <tbody>
