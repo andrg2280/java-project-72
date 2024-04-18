@@ -33,10 +33,9 @@ public class UrlCheckController {
 
             var descriptionTemp = doc.selectFirst("meta[name=description]");
             var description = descriptionTemp == null ? "" : descriptionTemp.attr("content");
+            
 
-            var createdAt = new Timestamp(System.currentTimeMillis());
-
-            var urlCheck = new UrlCheck(statusCode, title, h1, description, urlId, createdAt);
+            var urlCheck = new UrlCheck(statusCode, title, h1, description, urlId);
             UrlCheckRepository.save(urlCheck);
 
             ctx.sessionAttribute("flash", "Страница успешно проверена");
