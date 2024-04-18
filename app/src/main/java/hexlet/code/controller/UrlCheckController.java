@@ -13,7 +13,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.sql.SQLException;
-import java.sql.Timestamp;
 
 public class UrlCheckController {
     public static void checkUrl(Context ctx) throws SQLException {
@@ -33,7 +32,6 @@ public class UrlCheckController {
 
             var descriptionTemp = doc.selectFirst("meta[name=description]");
             var description = descriptionTemp == null ? "" : descriptionTemp.attr("content");
-            
 
             var urlCheck = new UrlCheck(statusCode, title, h1, description, urlId);
             UrlCheckRepository.save(urlCheck);
