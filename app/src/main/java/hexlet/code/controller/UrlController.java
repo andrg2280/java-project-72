@@ -41,8 +41,6 @@ public class UrlController {
                 .get()
                 .toLowerCase()
                 .trim();
-
-
         URL parsedUrl;
         try {
             parsedUrl = new URI(input).toURL();
@@ -53,8 +51,7 @@ public class UrlController {
             return;
         }
         String validURL = parsedUrl.getProtocol()
-                + "://" + parsedUrl.getHost()
-                + (parsedUrl.getPort() == -1 ? "" : ":")
+                + "://" + parsedUrl.getHost() + (parsedUrl.getPort() == -1 ? "" : ":")
                 + (parsedUrl.getPort() == -1 ? "" : String.valueOf(parsedUrl.getPort()));
         if (UrlRepository.findByName(validURL) != null) {
             ctx.sessionAttribute("flash", "Страница уже добавлена");
