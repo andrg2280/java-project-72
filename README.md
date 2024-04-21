@@ -1,8 +1,8 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/andrg2280/java-project-72/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/andrg2280/java-project-72/actions)
 [![Java CI](https://github.com/andrg2280/java-project-72/actions/workflows/main.yml/badge.svg)](https://github.com/andrg2280/java-project-72/actions/workflows/main.yml)
-[![Maintainability](https://api.codeclimate.com/v1/badges/bc953fb0ab378995dab3/maintainability)](https://codeclimate.com/github/hexlet-boilerplates/java-project-72/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/bc953fb0ab378995dab3/test_coverage)](https://codeclimate.com/github/hexlet-boilerplates/java-project-72/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/bc953fb0ab378995dab3/maintainability)](https://codeclimate.com/github/andrg2280/java-project-72/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/bc953fb0ab378995dab3/test_coverage)](https://codeclimate.com/github/andrg2280/java-project-72/test_coverage)
 
 # Анализатор страниц
 [Сайт](https://java-project-72-andrg2280.onrender.com) предназначен для анализа указанной страницы на SEO пригодность. Ссылка: https://java-project-72-andrg2280.onrender.com
