@@ -64,7 +64,6 @@ public class App {
         app.post(NamedRoutes.urlsPath(), UrlController::addPage);
         app.post(NamedRoutes.urlChecksPath("{id}"), UrlCheckController::checkUrl);
         return app;
-
     }
     public static void main(String[] args) throws IOException, SQLException {
         var app = getApp();
