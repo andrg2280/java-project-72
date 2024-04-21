@@ -57,7 +57,6 @@ public class App {
             config.bundledPlugins.enableDevLogging();
             config.fileRenderer(new JavalinJte(createTemplateEngine()));
         });
-        app.get("/welcome", ctx -> ctx.result("Welcome to Hexlet!"));
         app.get(NamedRoutes.rootPath(), RootController::index);
         app.get(NamedRoutes.urlsPath(), UrlController::show);
         app.get(NamedRoutes.urlPath("{id}"), UrlController::index);
