@@ -38,9 +38,7 @@ public class UrlController {
 
     public static void addPage(Context ctx) throws SQLException {
         var input = ctx.formParamAsClass("url", String.class)
-                .get()
-                .toLowerCase()
-                .trim();
+                .get().toLowerCase().trim();
         URL parsedUrl;
         try {
             parsedUrl = new URI(input).toURL();

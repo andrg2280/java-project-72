@@ -38,7 +38,6 @@ public class App {
         return templateEngine;
     }
     public static Javalin getApp() throws SQLException {
-
         var hikariConfig = new HikariConfig();
         String databaseUrl = getDatabaseUrl();
         if (databaseUrl.contains("postgresql")) {
